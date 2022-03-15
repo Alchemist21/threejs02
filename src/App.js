@@ -5,14 +5,14 @@ import { OrbitControls } from "@react-three/drei/core/OrbitControls";
 import { useGLTF } from "@react-three/drei";
 
 
-  function Model(props) {
-    const { scene } = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/door-old/model.gltf')
+function Model(props) {
+    const { scene } = useGLTF('https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/coronavirus/model.gltf')
     return <primitive object={scene} {...props} />
   }
-
 function App() {
   return (
     <VRCanvas>
+
     <OrbitControls />
      <ambientLight /> 
      <pointLight position={[18, 16, 10]} />
