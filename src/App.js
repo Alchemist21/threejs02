@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import { Hands, VRCanvas } from "@react-three/xr"
 import './App.css';
+import React, { Suspense } from "react"
+import { OrbitControls } from "@react-three/drei/core/OrbitControls";
+import { useGLTF } from "@react-three/drei";
+
+
+  function Model(props) {
+    const { scene } = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/door-old/model.gltf')
+    return <primitive object={scene} {...props} />
+  }
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <VRCanvas>
+    <OrbitControls />
+     <ambientLight /> 
+     <pointLight position={[18, 16, 10]} />
+     <Suspense fallback={null}>
+      <Model position={[0,-1.5,-1.5]} />
+     </Suspense>
+     <Hands />
+    </VRCanvas> 
   );
 }
 
